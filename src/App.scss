@@ -1,19 +1,16 @@
 * {
-  box-sizing: border-box;
-  margin: 0;
-  font-family: 'Open Sans', sans-serif;
-}
-
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+  }
 body {
   margin-top: 60px;
   margin-left: 40px;
   margin-right: 40px;
 }
-
 .flex-container {
   display: flex;
 }
-
 a {
   text-decoration: none;
 }

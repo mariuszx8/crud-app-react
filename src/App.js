@@ -1,16 +1,19 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
 import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {HashRouter} from 'react-router-dom'
 import Home from './pages/Home';
+import AddCampaign from './pages/AddCampaign';
 
 function App() {
   return (
     <div>
-      <Router>
+      <HashRouter>
         <Switch>
           <Route exact path='/' component={Home}/>
+          <Route  exact path='/AddCampaign' component={AddCampaign}/>
         </Switch>
-      </Router>
+      </HashRouter>
     </div>
   );
 }
