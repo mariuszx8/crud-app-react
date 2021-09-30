@@ -14,6 +14,7 @@ function Campaigns() {
         fetchData();
     }, []); // empty array means this effect will run only once
 
+
 // Displaying campaigns list
     return (
         <div className="campaigns-list">
@@ -21,34 +22,47 @@ function Campaigns() {
             {data.map((item) => (
                 <div key={item._id} className="flex-container campaign-element">
                     <div className="campaign-name">{item.name}</div>
-                    <div className="flex-container">
+                    <div className="flex-container details-container">
                         <div className="campaign-details">
-                            <div>Keywords: {item.keywords.map((keyword) => keyword + " ")}</div>
-                            <div>Status: {item.status}</div>
+                            <div>
+                                Keywords: {item.keywords.map((keyword, index) => (<span key={index} className="keyword">{keyword}</span>))}
+                            </div>
+                            <div>
+                                Status: <span className="bold">{item.status ? "on" : "off"}</span>
+                            </div>
                         </div>
                         <div className="campaign-details">
-                            <div>Bid amount: {item.bidAmount}</div>
-                            <div>Town: {item.town}</div>
+                            <div>
+                                Bid amount: <span className="bold">{item.bidAmount} zł</span>
+                            </div>
+                            <div>
+                                Campaign fund: <span className="bold">{item.fund} zł</span>
+                            </div>
                         </div>
                         <div className="campaign-details">
-                            <div>Campaign fund: {item.fund}</div>
-                            <div>Radius: {item.radius}</div>
+                            <div>
+                                Town: <span className="bold">{item.town}</span>
+                            </div>
+                            <div>
+                                Radius: <span className="bold">{item.radius} km</span>
+                                </div>
                         </div>
                         <div className="campaign-options">
-                            <div>
                                 <div className="edit-btn flex-container">
                                     <span className="material-icons">
                                         edit
                                     </span>
                                     Edit
                                 </div>
-                                <div className="delete-btn flex-container">
+                                <div 
+                                    className="delete-btn flex-container"
+                                    onClick={() => {if(window.confirm('Are you sure you want to delete this campaign?')){/* delete handler*/};}}
+                                >
                                     <span className="material-icons">
                                         delete
                                     </span>
                                     Delete
                                 </div>
-                            </div>
                         </div>
                     </div>
                 </div>
