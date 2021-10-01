@@ -9,12 +9,12 @@ function Campaigns() {
     const [data,setData] = useState([]);
 
     useEffect(() => {
+        var cData = JSON.parse(localStorage.getItem("campaignData"));
         async function fetchData() {
-            var cData = JSON.parse(localStorage.getItem("campaignData"));
-            if (cData.length>0) {
+            if ( cData!=null && cData.length>0) {
                 setData(cData)
             } else {
-                const res = await axios.get("http://192.109.240.27:8080/Campaign");
+                const res = await axios.get("http://192.109.240.27:8080/Campaigns");
                 setData(res.data);
                 localStorage.setItem("campaignData", JSON.stringify(res.data));
             }
