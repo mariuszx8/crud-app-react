@@ -1,0 +1,10 @@
+{
+  "short_name": "CRUD App",
+  "name": "Create Read Update Delete App",
+  "icons": [
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
