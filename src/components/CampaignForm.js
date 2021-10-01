@@ -1,16 +1,22 @@
-import React from 'react'
+import React from 'react';
 import './CampaignForm.scss';
 
-function CampaignForm() {
-
+function CampaignForm(props) {
+    
     //Array of towns for pre-populated dropdown list
     let towns = [];
+    //Array of keywords for typeahead
+    let keywords = [];
     var campaignData = JSON.parse(localStorage.getItem("campaignData"));
     for (var i =0; i< campaignData.length; i++) {
         towns[i] = campaignData[i].town;
+        for (const el of campaignData[i].keywords) {
+            keywords.push(el);
+        }
     }
-    let uniqueTowns = [...new Set(towns)];
-    
+    var uniqueTowns = [...new Set(towns)];
+    var uniqueKeywords = Array.from([...new Set(keywords)]);
+
     const saveData = (event) => {
         event.preventDefault();
         if(event.target.status.value==="on") {event.target.status.value=true} else {event.target.status.value=false};
@@ -30,9 +36,11 @@ function CampaignForm() {
         campaignData[i+1] = newCampaign;
         localStorage.setItem("campaignData", JSON.stringify(campaignData));
         alert("Successfully added new campaign");
+        if(localStorage.getItem("editedCampaign")!=null) {
+            localStorage.removeItem("editedCampaign");
+        };
         window.location.reload(false);
     }
-
     return (
         <form onSubmit={saveData}>
             <div>
@@ -54,7 +62,11 @@ function CampaignForm() {
                         name="keywords"
                         placeholder="Enter keywords for campaign"
                         required
+                        list='keywords_list'
                     />
+                     <datalist id="keywords_list">
+                        {uniqueKeywords.map((option, index) =>(<option key={index} value={option}></option>))}
+                    </datalist>
                 </label>
                 <label className="status">
                     Status (on/off):

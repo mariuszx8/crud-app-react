@@ -34,6 +34,9 @@ function Campaigns() {
         window.location.reload(false);
     }
 
+    function editHandler(paramID) {
+        localStorage.setItem("editedCampaign", JSON.stringify(paramID));
+    }
 
 // Displaying campaigns list
     return (
@@ -69,7 +72,7 @@ function Campaigns() {
                         </div>
                         <div className="campaign-options">
                             <div className="edit-btn flex-container">
-                                <Link to={`/EditCampaign`} className="flex-container" style={{alignItems:'center'}}>
+                                <Link onClick={() => {editHandler(item._id)}} to={`/EditCampaign`} className="flex-container" style={{alignItems:'center'}}>
                                     <span className="material-icons">
                                         edit
                                     </span>
