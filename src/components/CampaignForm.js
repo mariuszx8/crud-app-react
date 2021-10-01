@@ -2,8 +2,31 @@ import React from 'react'
 import './CampaignForm.scss';
 
 function CampaignForm() {
+    
+    const saveData = (event) => {
+        event.preventDefault();
+        if(event.target.status.value==="on") {event.target.status.value=true} else {event.target.status.value=false};
+        var campaignData = JSON.parse(localStorage.getItem("campaignData"));
+        var i = campaignData.length-1;
+        var newID = campaignData[i]._id.split('').sort((a, b) => 0.5 - Math.random());
+        var newCampaign = {
+            _id: newID.join(""),
+            name: event.target.name.value,
+            keywords: event.target.keywords.value.split(" "),
+            bidAmount:event.target.bidAmount.value,
+            fund:event.target.fund.value,
+            status: event.target.status.value,
+            town: event.target.town.value,
+            radius: event.target.radius.value,
+        };
+        campaignData[i+1] = newCampaign;
+        localStorage.setItem("campaignData", JSON.stringify(campaignData));
+        alert("Successfully added new campaign");
+        window.location.reload(false);
+    }
+
     return (
-        <form>
+        <form onSubmit={saveData}>
             <div>
                 <label>
                     Campaign name:
@@ -30,7 +53,6 @@ function CampaignForm() {
                     <input
                         type="checkbox"
                         name='status'
-                        required
                     />
                 </label>
             </div>
@@ -51,6 +73,7 @@ function CampaignForm() {
                         type="number"
                         name="fund"
                         placeholder="Enter campaign fund"
+                        min="1"
                         required
                     />
                 </label>
@@ -70,6 +93,7 @@ function CampaignForm() {
                         type="number"
                         name="radius"
                         placeholder="Enter campaign radius"
+                        min="1"
                         required
                     />
                 </label>

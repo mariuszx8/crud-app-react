@@ -10,11 +10,29 @@ function Campaigns() {
 
     useEffect(() => {
         async function fetchData() {
-            const res = await axios.get("http://192.109.240.27:8080/Campaign");
-            setData(res.data);
+            var cData = JSON.parse(localStorage.getItem("campaignData"));
+            if (cData.length>0) {
+                setData(cData)
+            } else {
+                const res = await axios.get("http://192.109.240.27:8080/Campaign");
+                setData(res.data);
+                localStorage.setItem("campaignData", JSON.stringify(res.data));
+            }
         }
         fetchData();
+        
     }, []); // empty array means this effect will run only once
+
+    function deleteHandler(paramID) {
+        var campaignData = JSON.parse(localStorage.getItem("campaignData"));
+        for (var i =0; i< campaignData.length; i++) {
+            if (campaignData[i]._id === paramID) {
+               campaignData.splice(i, 1);
+            }
+        }
+        localStorage.setItem("campaignData", JSON.stringify(campaignData));
+        window.location.reload(false);
+    }
 
 
 // Displaying campaigns list
@@ -60,7 +78,7 @@ function Campaigns() {
                             </div>
                             <div 
                                 className="delete-btn flex-container"
-                                onClick={() => {if(window.confirm('Are you sure you want to delete this campaign?')){/* delete handler*/};}}
+                                onClick={() => {if(window.confirm('Are you sure you want to delete this campaign?')){deleteHandler(item._id)};}}
                             >
                                 <span className="material-icons">
                                     delete
