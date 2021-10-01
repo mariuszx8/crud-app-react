@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/crud-app-react/static/css/main.55aa2525.chunk.css",
-    "main.js": "/crud-app-react/static/js/main.85c3a7ba.chunk.js",
-    "main.js.map": "/crud-app-react/static/js/main.85c3a7ba.chunk.js.map",
+    "main.js": "/crud-app-react/static/js/main.f241e71e.chunk.js",
+    "main.js.map": "/crud-app-react/static/js/main.f241e71e.chunk.js.map",
     "runtime-main.js": "/crud-app-react/static/js/runtime-main.b947e562.js",
     "runtime-main.js.map": "/crud-app-react/static/js/runtime-main.b947e562.js.map",
     "static/js/2.8a0c9be9.chunk.js": "/crud-app-react/static/js/2.8a0c9be9.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.b947e562.js",
     "static/js/2.8a0c9be9.chunk.js",
     "static/css/main.55aa2525.chunk.css",
-    "static/js/main.85c3a7ba.chunk.js"
+    "static/js/main.f241e71e.chunk.js"
   ]
 }
