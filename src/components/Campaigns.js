@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios'; // http client for node
 import '../App.scss';
 import './Campaigns.scss';
@@ -49,21 +50,23 @@ function Campaigns() {
                                 </div>
                         </div>
                         <div className="campaign-options">
-                                <div className="edit-btn flex-container">
+                            <div className="edit-btn flex-container">
+                                <Link to={`/EditCampaign`} className="flex-container" style={{alignItems:'center'}}>
                                     <span className="material-icons">
                                         edit
                                     </span>
                                     Edit
-                                </div>
-                                <div 
-                                    className="delete-btn flex-container"
-                                    onClick={() => {if(window.confirm('Are you sure you want to delete this campaign?')){/* delete handler*/};}}
-                                >
-                                    <span className="material-icons">
-                                        delete
-                                    </span>
-                                    Delete
-                                </div>
+                                </Link>
+                            </div>
+                            <div 
+                                className="delete-btn flex-container"
+                                onClick={() => {if(window.confirm('Are you sure you want to delete this campaign?')){/* delete handler*/};}}
+                            >
+                                <span className="material-icons">
+                                    delete
+                                </span>
+                                Delete
+                            </div>
                         </div>
                     </div>
                 </div>
