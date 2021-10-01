@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios'; // http client for node
+// import axios from 'axios'; // http client for node
 import '../App.scss';
 import './Campaigns.scss';
 //GET request
@@ -11,10 +11,10 @@ function Campaigns() {
     useEffect(() => {
         var cData = JSON.parse(localStorage.getItem("campaignData"));
         async function fetchData() {
-            if ( cData!=null && cData.length>0) {
-                setData(cData)
+            if (cData!=null && cData.length>1) {
+                setData(cData);
             } else {
-                const res = await axios.get("http://192.109.240.27:8080/Campaigns");
+                const res = require('../data/db_copy.json');
                 setData(res.data);
                 localStorage.setItem("campaignData", JSON.stringify(res.data));
             }
