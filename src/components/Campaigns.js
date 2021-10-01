@@ -9,14 +9,14 @@ function Campaigns() {
     const [data,setData] = useState([]);
 
     useEffect(() => {
-        var cData = JSON.parse(localStorage.getItem("campaignData"));
+        var cData = localStorage.getItem("campaignData");
         async function fetchData() {
-            if (cData!=null && cData.length>1) {
+            if (cData!=null) {
                 setData(cData);
             } else {
-                const res = require('../data/db_copy.json');
-                setData(res.data);
-                localStorage.setItem("campaignData", JSON.stringify(res.data));
+                var res = require('../data/db_copy.json');
+                setData(res);
+                localStorage.setItem("campaignData", JSON.stringify(res));
             }
         }
         fetchData();
