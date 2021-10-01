@@ -10,7 +10,6 @@ function Campaigns() {
 
     useEffect(() => {
         var cData = localStorage.getItem("campaignData");
-        console.log(cData);
         async function fetchData() {
             if (cData!=null) {
                 setData(JSON.parse(cData));

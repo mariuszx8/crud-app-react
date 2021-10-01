@@ -2,6 +2,14 @@ import React from 'react'
 import './CampaignForm.scss';
 
 function CampaignForm() {
+
+    //Array of towns for pre-populated dropdown list
+    let towns = [];
+    var campaignData = JSON.parse(localStorage.getItem("campaignData"));
+    for (var i =0; i< campaignData.length; i++) {
+        towns[i] = campaignData[i].town;
+    }
+    let uniqueTowns = [...new Set(towns)];
     
     const saveData = (event) => {
         event.preventDefault();
@@ -82,10 +90,14 @@ function CampaignForm() {
                 <label>
                     Town:
                     <input
+                        list="towns"
                         type="text"
                         name="town"
                         placeholder="Enter town name"
                     />
+                    <datalist id="towns">
+                        {uniqueTowns.map((option, index) =>(<option key={index} value={option}></option>))}
+                    </datalist>
                 </label>
                 <label>
                     Radius [kilometers]:
