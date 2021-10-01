@@ -32,7 +32,9 @@ function AddCampaign() {
 
     return (
         <div>
-            <header>Add campaign</header>
+            <header>
+                <span>Add campaign</span>
+            </header>
            <CampaignForm/>
         </div>
     )

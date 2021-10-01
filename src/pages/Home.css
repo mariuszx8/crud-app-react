@@ -1,5 +1,5 @@
 .btn-add {
-  background-color: #1676f3;
+  background-color: var(--blue-primary);
   color: white;
   font-weight: 500;
   display: inline;

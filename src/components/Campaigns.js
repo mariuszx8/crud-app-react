@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'; // http client for node
+import '../App.scss';
 import './Campaigns.scss';
 //GET request
 function Campaigns() {
@@ -20,7 +21,7 @@ function Campaigns() {
         <div className="campaigns-list">
             <div className="name-header">Campaigns:</div>
             {data.map((item) => (
-                <div key={item._id} className="flex-container campaign-element">
+                <div key={item._id} className="flex-container flex-column campaign-element">
                     <div className="campaign-name">{item.name}</div>
                     <div className="flex-container details-container">
                         <div className="campaign-details">

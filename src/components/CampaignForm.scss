@@ -1,0 +1,109 @@
+form {
+    margin-top: 30px;
+
+    div:not(:first-child):not(.buttons) {
+        @media (max-width: 992px) {
+            flex-direction: column;
+        };
+    }
+
+    div {
+        display: flex;
+    }
+
+    label {
+        display: flex;
+        flex-direction: column;
+        width: 35em;
+        color: #5b6775;
+        font-weight: 600;
+        font-size: 0.9em;
+        margin-bottom: 1.5em;
+        margin-right: 40px;
+
+        @media (max-width: 1200px) {
+            width: 25em;
+        };
+
+        @media (max-width: 992px) {
+            width: 30em;
+            margin-right: 0;
+        };
+
+        @media (max-width: 576px) {
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        };
+
+        input {
+            margin-top: 0.3em;
+            background-color: var(--boring-gray);
+            border: none;
+            padding: 10px;
+            font-weight: 500;
+            font-size: 1.2em;
+            border-radius: 5px;
+        }
+    }
+
+    label.status {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        font-size: 1em;
+        margin-top: 20px;
+        max-width: 30em;
+
+        @media (max-width: 992px) {
+            margin-top: 0;
+        };
+
+
+        input[type=checkbox] {
+            margin: 0 0 0 10px;
+            transform: scale(1.5);
+        }
+    }
+
+    label:focus-within {
+        color: var(--blue-primary);
+    }
+
+    div.buttons {
+        width: 65em;
+        justify-content: flex-end;
+
+        @media (max-width: 1200px) {
+            width: 47em;
+        };
+
+        @media (max-width: 992px) {
+            width: initial;
+            justify-content: left;
+        };
+
+        @media (max-width: 576px) {
+           justify-content: center;
+        };
+    }
+
+    button {
+        padding: 8px 12px;
+        font-size: 1.1em;
+        font-weight: 500;
+        border: none;
+        border-radius: 1px;
+    }
+
+    button[type=reset] {
+        color: var(--blue-primary);
+        background-color: var(--boring-gray);
+        margin-right: 20px;
+    }
+
+    button[type=submit] {
+        color: #fff;
+        background-color: var(--blue-primary);
+    }
+}
