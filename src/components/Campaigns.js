@@ -10,11 +10,12 @@ function Campaigns() {
 
     useEffect(() => {
         var cData = localStorage.getItem("campaignData");
+        console.log(cData);
         async function fetchData() {
             if (cData!=null) {
-                setData(cData);
+                setData(JSON.parse(cData));
             } else {
-                var res = require('../data/db_copy.json');
+                var res = [{"_id":"6155e3d99c855bb61558d2ec","name":"Wiosenna odwilż","keywords":["wiosna","promocja","ceny"],"bidAmount":300,"fund":5000,"status":true,"town":"Warszawa","radius":40},{"_id":"61560bba017d85faace7687c","name":"Zima 2021","keywords":["zima","promocja","obniżka"],"bidAmount":500,"fund":8000,"status":false,"town":"Kraków","radius":20},{"_id":"61562c995050127a4821732d","name":"Sportowa Polska","keywords":["sport","ruch"],"bidAmount":700,"fund":9000,"status":true,"town":"Warszawa","radius":400}];
                 setData(res);
                 localStorage.setItem("campaignData", JSON.stringify(res));
             }
@@ -26,8 +27,8 @@ function Campaigns() {
     function deleteHandler(paramID) {
         var campaignData = JSON.parse(localStorage.getItem("campaignData"));
         for (var i =0; i< campaignData.length; i++) {
-            if (campaignData[i]._id === paramID) {
-               campaignData.splice(i, 1);
+            if (campaignData[i]._id == paramID) {
+                campaignData.splice(i, 1);
             }
         }
         localStorage.setItem("campaignData", JSON.stringify(campaignData));
