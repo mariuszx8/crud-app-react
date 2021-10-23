@@ -2,7 +2,6 @@
   "name": "crud-app-react",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://mariuszx8.github.io/crud-app-react/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
@@ -17,6 +16,7 @@
     "react-scripts": "4.0.3",
     "react-select": "^5.0.0",
     "sass": "^1.42.1",
+    "uuid": "^8.3.2",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
