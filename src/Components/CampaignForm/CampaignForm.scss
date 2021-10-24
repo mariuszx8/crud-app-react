@@ -1,5 +1,6 @@
 form {
     margin-top: 30px;
+    padding-bottom: 60px;
 
     div:not(:first-child):not(.buttons) {
         @media (max-width: 992px) {

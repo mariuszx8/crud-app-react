@@ -8,13 +8,11 @@ function Campaigns() {
     const [campaignData,setCampaignData] = useState([]);
 
     useEffect(() => {
-        var cData = JSON.parse(localStorage.getItem("campaignData"));
+        var cData = localStorage.getItem("campaignData");
         if (cData!= null && cData.length > 0) {
-            setCampaignData(cData);
+            setCampaignData(JSON.parse(cData));
         } else {
-            var example = [{"_id":"1","name":"Kampania reklamowa","keywords":["promocja","ceny"],"bidAmount":300,"fund":5000,"status":true,"town":"Warszawa","radius":200}];
-            setCampaignData(example);
-            localStorage.setItem("campaignData", JSON.stringify(example));
+            localStorage.setItem("campaignData", []);
         }
     }, []);
 

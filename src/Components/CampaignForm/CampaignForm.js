@@ -13,24 +13,31 @@ function CampaignForm({campaign}) {
     const [status, setStatus] = useState(campaign.status);
     const [town, setTown] = useState(campaign.town);
     const [radius, setRadius] = useState(campaign.radius);
+    const [isEdited] = useState(campaign._id === '' ? false : true);
 
     const history = useHistory();
 
-    let towns = [];
-    let keywords = [];
-    var campaignData = JSON.parse(localStorage.getItem("campaignData"));
-    for (var i =0; i< campaignData.length; i++) {
-        towns[i] = campaignData[i].town;
-        for (const el of campaignData[i].keywords) {
-            keywords.push(el);
+    var towns = [];
+    var keywords = [];
+    var campaignData = localStorage.getItem("campaignData");
+
+    if (campaignData!= null && campaignData.length > 0) {
+        campaignData = JSON.parse(campaignData);
+        
+        for (var i =0; i< campaignData.length; i++) {
+            towns[i] = campaignData[i].town;
+            for (const el of campaignData[i].keywords) {
+                keywords.push(el);
+            }
         }
+    } else {
+        campaignData = []
     }
     var uniqueTowns = Array.from([...new Set(towns)]);
     var uniqueKeywords = Array.from([...new Set(keywords)]);
 
     const saveData = (event) => {
         event.preventDefault();
-        var i = campaignData.length-1;
         var newCampaign = {
             _id: id,
             name: name,
@@ -41,7 +48,15 @@ function CampaignForm({campaign}) {
             town: town,
             radius: radius,
         };
-        campaignData[i+1] = newCampaign;
+        if(isEdited) {
+            for(var i=0;i<campaignData.length;i++) {
+                if(campaignData[i]._id === id) {
+                    campaignData[i]= newCampaign;
+                }
+             }
+        } else {
+            campaignData.push(newCampaign);
+        }
         localStorage.setItem("campaignData", JSON.stringify(campaignData));
         alert("Saved campaign");
         history.push('/')
@@ -95,7 +110,7 @@ function CampaignForm({campaign}) {
                         type="checkbox"
                         name='status'
                         checked={status}
-                        onChange={(event) => setStatus(event.target.value)}
+                        onChange={(event) => setStatus(event.target.checked)}
                     />
                 </label>
             </div>
